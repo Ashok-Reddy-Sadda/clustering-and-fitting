@@ -54,7 +54,7 @@ def plot_statistical_plot(df):
 
 
 def statistical_analysis(df, col: str):
-    """Perform statistical analysis: mean, stddev, skew, and excess kurtosis."""
+    """Perform statistical analysis"""
     mean = df[col].mean()
     stddev = df[col].std()
     skew = ss.skew(df[col])
@@ -132,7 +132,7 @@ def perform_clustering(df, col1, col2):
 def plot_clustered_data(labels, data, xkmeans, ykmeans, centre_labels):
     """Plot clustered data with cluster centers."""
     fig, ax = plt.subplots()
-    scatter = ax.scatter(data[:, 0], data[:, 1], c=labels, cmap='viridis', alpha=0.5)
+    ax.scatter(data[:, 0], data[:, 1], c=labels, cmap='viridis', alpha=0.5)
     ax.scatter(xkmeans, ykmeans, c='red', marker='X', s=100, label='Centroids')
     ax.set_title("K-Means Clustering")
     ax.legend()
@@ -176,9 +176,15 @@ def main():
     plot_categorical_plot(df)
     moments = statistical_analysis(df, col)
     writing(moments, col)
-    clustering_results = perform_clustering(df, 'Sum of Males  Life Expectancy', 'Sum of Females  Life Expectancy')
+    clustering_results = perform_clustering(df, 
+                                            'Sum of Males  Life Expectancy', 
+                                            'Sum of Females  Life Expectancy'
+                                           )
     plot_clustered_data(*clustering_results)
-    fitting_results = perform_fitting(df, 'Sum of Males  Life Expectancy', 'Sum of Life Expectancy  (both sexes)')
+    fitting_results = perform_fitting(df, 
+                                      'Sum of Males  Life Expectancy', 
+                                      'Sum of Life Expectancy  (both sexes)'
+                                     )
     plot_fitted_data(*fitting_results)
     return
 
