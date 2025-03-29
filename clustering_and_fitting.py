@@ -179,12 +179,12 @@ def main():
     clustering_results = perform_clustering(df, 
                                             'Sum of Males  Life Expectancy', 
                                             'Sum of Females  Life Expectancy'
-                                           )
+    )
     plot_clustered_data(*clustering_results)
     fitting_results = perform_fitting(df, 
                                       'Sum of Males  Life Expectancy', 
                                       'Sum of Life Expectancy  (both sexes)'
-                                     )
+    )
     plot_fitted_data(*fitting_results)
     return
 
